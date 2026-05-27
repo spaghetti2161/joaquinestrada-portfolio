@@ -1,0 +1,33 @@
+name: 🚀 Deploy a cPanel
+
+# Se ejecuta cada vez que hacés push a la rama "main"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # necesario para detectar archivos cambiados
+
+      - name: Subir al servidor via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server:     ${{ secrets.FTP_SERVER }}
+          username:   ${{ secrets.FTP_USERNAME }}
+          password:   ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/   # ← ajustá si tu carpeta es distinta
+          # Solo sube los archivos que cambiaron (rápido después del primer deploy)
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            README.md
+            **/.DS_Store

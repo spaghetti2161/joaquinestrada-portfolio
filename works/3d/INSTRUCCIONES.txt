@@ -1,0 +1,22 @@
+═══════════════════════════════════════════════════
+  CÓMO SUBIR TRABAJO 3D (ZBrush / Blender)
+═══════════════════════════════════════════════════
+
+Subí renders, turntables (como imágenes) o capturas
+directamente a esta carpeta.
+
+FORMATOS ACEPTADOS
+  jpg · jpeg · png · webp · gif · avif
+
+NOMBRE DEL ARCHIVO → TÍTULO EN EL PORTFOLIO
+  zbrush-creature-01.jpg  →  "Zbrush Creature"
+  blender-env-render.png  →  "Blender Env Render"
+
+ORDEN
+  Las imágenes más nuevas aparecen primero.
+
+TAMAÑO RECOMENDADO
+  Ancho máximo: 2000 px
+  Peso máximo:  2 MB por imagen
+
+═══════════════════════════════════════════════════

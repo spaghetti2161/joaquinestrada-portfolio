@@ -1,0 +1,31 @@
+# ── Seguridad ────────────────────────────────────────────
+# Evita que se vean los archivos de las carpetas
+Options -Indexes
+
+# Bloquea acceso directo al .htaccess
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# ── Compresión ───────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript text/plain
+</IfModule>
+
+# ── Caché del navegador ──────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg  "access plus 3 months"
+    ExpiresByType image/png   "access plus 3 months"
+    ExpiresByType image/webp  "access plus 3 months"
+    ExpiresByType image/gif   "access plus 3 months"
+    ExpiresByType image/avif  "access plus 3 months"
+    ExpiresByType text/css    "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# ── PHP: subida de archivos grandes ─────────────────────
+# (por si lo necesitás en el futuro para un admin)
+# php_value upload_max_filesize 20M
+# php_value post_max_size 20M
