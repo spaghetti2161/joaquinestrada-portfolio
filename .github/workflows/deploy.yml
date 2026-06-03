@@ -23,7 +23,7 @@ jobs:
           server:     ${{ secrets.FTP_SERVER }}
           username:   ${{ secrets.FTP_USERNAME }}
           password:   ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/   # ← ajustá si tu carpeta es distinta
+          server-dir: /public_html/joaquinestrada.com.ar/
           # Solo sube los archivos que cambiaron (rápido después del primer deploy)
           exclude: |
             **/.git*

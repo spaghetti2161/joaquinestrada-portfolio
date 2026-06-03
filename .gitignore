@@ -18,3 +18,6 @@ error_log
 
 # Dependencias (por si en el futuro agregás algo)
 node_modules/
+
+# Claude Code (configuración local del editor)
+.claude/
