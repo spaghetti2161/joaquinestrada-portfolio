@@ -1,6 +1,5 @@
 name: 🚀 Deploy a cPanel
 
-# Se ejecuta cada vez que hacés push a la rama "main"
 on:
   push:
     branches:
@@ -8,26 +7,13 @@ on:
 
 jobs:
   deploy:
-    name: FTP Deploy
+    name: cPanel Git Pull
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2   # necesario para detectar archivos cambiados
-
-      - name: Subir al servidor via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server:     ${{ secrets.FTP_SERVER }}
-          username:   ${{ secrets.FTP_USERNAME }}
-          password:   ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/joaquinestrada.com.ar/
-          # Solo sube los archivos que cambiaron (rápido después del primer deploy)
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            README.md
-            **/.DS_Store
+      - name: Trigger cPanel Git pull & deploy
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            --max-time 30 \
+            -u "${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_PASSWORD }}" \
+            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=%2Fhome2%2Frevista1%2Fpublic_html%2Fjoaquinestrada.com.ar"
