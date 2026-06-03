@@ -1,19 +1,7 @@
-name: 🚀 Deploy a cPanel
-
-on:
-  push:
-    branches:
-      - main
-
+name: Deploy (desactivado)
+on: workflow_dispatch
 jobs:
-  deploy:
-    name: cPanel Git Pull
+  noop:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Trigger cPanel Git pull & deploy
-        run: |
-          curl -s -o /dev/null -w "%{http_code}" \
-            --max-time 30 \
-            -u "${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_PASSWORD }}" \
-            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=%2Fhome2%2Frevista1%2Fpublic_html%2Fjoaquinestrada.com.ar"
+      - run: echo "Deploy via webhook.php — ver README"

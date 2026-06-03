@@ -1,6 +1,19 @@
+# Desactivar Passenger/Node.js — servir PHP directo
+PassengerEnabled off
+
+# Forzar HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # ── Seguridad ────────────────────────────────────────────
-# Evita que se vean los archivos de las carpetas
 Options -Indexes
+
+# Bloquear acceso a logs y archivos sensibles
+<FilesMatch "(webhook\.log|\.env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
 
 # Bloquea acceso directo al .htaccess
 <Files .htaccess>
